@@ -7,6 +7,10 @@ pipeline {
     options {
         ansiColor('xterm')
     }
+    
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-juacarleo')
+	}
 
     stages {
 
@@ -30,6 +34,31 @@ pipeline {
                 sh "/usr/bin/sbt package"
             }
         }
+        stage('Build') {
 
-    }
+			steps {
+				sh 'docker build -t juyashuiasd/training:latest .'
+			}
+		}
+
+	stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push juyashuiasd/training:latest .'
+			}
+		}
+	}
+
+	post {
+		always {
+			sh 'docker logout'
+		}
+	}
 }
