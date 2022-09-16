@@ -51,7 +51,7 @@ pipeline {
 		stage('Push') {
 
 			steps {
-				sh 'docker push juyashuiasd/training:latest .'
+				sh 'docker push juyashuiasd/training:latest'
 			}
 		}
 	}
