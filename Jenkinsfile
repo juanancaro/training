@@ -9,21 +9,21 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "Compiling..."
-                sh "/usr/local/bin/sbt compile"
+                sh "/home/juyas/.local/share/coursier/bin/sbt compile"
             }
         }
 
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh "/usr/local/bin/sbt test"
+                sh "/home/juyas/.local/share/coursier/bin/sbt test"
             }
         }
 
         stage('Package') {
             steps {
                 echo "Packaging..."
-                sh "/usr/local/bin/sbt package"
+                sh "/home/juyas/.local/share/coursier/bin/sbt package"
             }
         }
 
