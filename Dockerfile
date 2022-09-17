@@ -2,9 +2,9 @@ FROM sbtscala/scala-sbt:17.0.2_1.6.2_3.1.3
 
 RUN mkdir -p /home/app
 
-COPY ./* /home/app/
+COPY ./* /home/training/
 
-WORKDIR /home/app/
+WORKDIR /home/training
 
 RUN ["sbt", "assembly"]
 
