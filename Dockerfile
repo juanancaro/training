@@ -6,6 +6,7 @@ COPY ./* /home/app/
 
 WORKDIR /home/app
 
-RUN ["sbt", "compile"]
+RUN ["sbt", "assembly"]
 
-CMD ["sbt", "run"]
+CMD ["java", "-jar", "./target/scala-2.13/training.jar"]
+
